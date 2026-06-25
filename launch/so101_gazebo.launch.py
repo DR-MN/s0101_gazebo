@@ -7,7 +7,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
 
-def _spawn_robot(package_name, entity_name, x_position, y_position, z_position, yaw):
+def _spawn_robot(package_name, entity_name, x, y, z):
     package_share = get_package_share_directory(package_name)
     urdf_path = os.path.join(package_share, 'urdf', 'so101.urdf')
 
@@ -18,10 +18,7 @@ def _spawn_robot(package_name, entity_name, x_position, y_position, z_position, 
         arguments=[
             '-entity', entity_name,
             '-file', urdf_path,
-            '-x', str(x_position),
-            '-y', str(y_position),
-            '-z', str(z_position),
-            '-Y', str(yaw),
+            '-x', str(x), '-y', str(y), '-z', str(z),
             '-timeout', '30',
         ],
     )
@@ -62,31 +59,15 @@ def generate_launch_description():
 
     rsp = _robot_state_publisher('so101_gazebo')
 
-    tf_follower = Node(
-        package='tf2_ros',
-        executable='static_transform_publisher',
-        name='tf_world_follower',
-        arguments=[
-            '--x', '-0.55', '--y', '0.0', '--z', '0.7774',
-            '--roll', '0.0', '--pitch', '0.0', '--yaw', '0.0',
-            '--frame-id', 'world',
-            '--child-frame-id', 'base_link',
-        ],
-        output='screen',
-    )
-
-    spawn_follower = _spawn_robot(
-        package_name='so101_gazebo',
-        entity_name='so101_follower',
-        x_position=-0.55,
-        y_position=0.0,
-        z_position=0.7774,
-        yaw=0.0,
-    )
+    # Spawn at the world origin: the -0.55/0/0.7774 mounting offset now lives
+    # in the world->base_link fixed joint inside the URDF, so applying it here
+    # too would double it. robot_state_publisher publishes world->base_link
+    # from that joint, so the old static_transform_publisher is removed
+    # (two publishers for the same transform fight and cause TF jitter).
+    spawn_follower = _spawn_robot('so101_gazebo', 'so101_follower', 0.0, 0.0, 0.0)
 
     return LaunchDescription([
         gazebo,
         rsp,
-        tf_follower,
         TimerAction(period=5.0, actions=[spawn_follower]),
     ])
