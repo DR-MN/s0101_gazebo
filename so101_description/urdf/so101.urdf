@@ -1,8 +1,7 @@
-<!-- Generated using onshape-to-robot -->
-<!-- Onshape https://cad.onshape.com/documents/7715cc284bb430fe6dab4ffd/w/4fd0791b683777b02f8d975a/e/826c553ede3b7592eb9ca800 -->
+
+
 <robot name="so101_new_calib">
 
-  <!-- Materials -->
   <material name="3d_printed">
     <color rgba="1.0 0.82 0.12 1.0"/>
   </material>
@@ -10,9 +9,6 @@
     <color rgba="0.1 0.1 0.1 1.0"/>
   </material>
 
-  <!-- World anchor: welds the arm to the inertial world frame so it cannot
-       fall or drift. The mounting offset (table top) lives HERE, so the
-       launch file must spawn the model at 0 0 0 (no double offset). -->
   <link name="world"/>
 
   <joint name="base_to_world" type="fixed">
@@ -21,14 +17,13 @@
     <child link="base_link"/>
   </joint>
 
-  <!-- Link base -->
   <link name="base_link">
     <inertial>
       <origin xyz="0.0137179 -5.19711e-05 0.0334843" rpy="0 0 0"/>
       <mass value="0.147"/>
       <inertia ixx="0.000114686" ixy="-4.59787e-07" ixz="4.97151e-06" iyy="0.000136117" iyz="9.75275e-08" izz="0.000130364"/>
     </inertial>
-    <!-- Part base_motor_holder_so101_v1 -->
+    
     <visual>
       <origin xyz="-0.00636471 -9.94414e-05 -0.0024" rpy="1.5708 -1.67685e-15 1.5708"/>
       <geometry>
@@ -42,7 +37,7 @@
         <mesh filename="file:///home/madhan/test_files/so101_gazebo/so101_description/meshes/base_motor_holder_so101_v1.stl"/>
       </geometry>
     </collision>
-    <!-- Part base_so101_v2 -->
+    
     <visual>
       <origin xyz="-0.00636471 -8.97657e-09 -0.0024" rpy="1.5708 -2.78073e-29 1.5708"/>
       <geometry>
@@ -56,7 +51,7 @@
         <mesh filename="file:///home/madhan/test_files/so101_gazebo/so101_description/meshes/base_so101_v2.stl"/>
       </geometry>
     </collision>
-    <!-- Part sts3215_03a_v1 -->
+    
     <visual>
       <origin xyz="0.0263353 -8.97657e-09 0.0437" rpy="-8.21148e-16 7.84513e-18 1.249e-15"/>
       <geometry>
@@ -70,7 +65,7 @@
         <mesh filename="file:///home/madhan/test_files/so101_gazebo/so101_description/meshes/sts3215_03a_v1.stl"/>
       </geometry>
     </collision>
-    <!-- Part waveshare_mounting_plate_so101_v2 -->
+    
     <visual>
       <origin xyz="-0.0309827 -0.000199441 0.0474" rpy="1.5708 -1.35493e-14 1.5708"/>
       <geometry>
@@ -86,14 +81,13 @@
     </collision>
   </link>
 
-  <!-- Link shoulder -->
   <link name="shoulder_link">
     <inertial>
       <origin xyz="-0.0307604 -1.66727e-05 -0.0252713" rpy="0 0 0"/>
       <mass value="0.100006"/>
       <inertia ixx="8.3759e-05" ixy="7.55525e-08" ixz="-1.16342e-06" iyy="8.10403e-05" iyz="1.54663e-07" izz="2.39783e-05"/>
     </inertial>
-    <!-- Part sts3215_03a_v1_2 -->
+    
     <visual>
       <origin xyz="-0.0303992 0.000422241 -0.0417" rpy="1.5708 1.5708 0"/>
       <geometry>
@@ -107,7 +101,7 @@
         <mesh filename="file:///home/madhan/test_files/so101_gazebo/so101_description/meshes/sts3215_03a_v1.stl"/>
       </geometry>
     </collision>
-    <!-- Part motor_holder_so101_base_v1 -->
+    
     <visual>
       <origin xyz="-0.0675992 -0.000177759 0.0158499" rpy="1.5708 -1.5708 0"/>
       <geometry>
@@ -121,7 +115,7 @@
         <mesh filename="file:///home/madhan/test_files/so101_gazebo/so101_description/meshes/motor_holder_so101_base_v1.stl"/>
       </geometry>
     </collision>
-    <!-- Part rotation_pitch_so101_v1 -->
+    
     <visual>
       <origin xyz="0.0122008 2.22413e-05 0.0464" rpy="-1.5708 2.35221e-33 0"/>
       <geometry>
@@ -137,14 +131,13 @@
     </collision>
   </link>
 
-  <!-- Link upper_arm -->
   <link name="upper_arm_link">
     <inertial>
       <origin xyz="-0.0898471 -0.00838224 0.0184089" rpy="0 0 0"/>
       <mass value="0.103"/>
       <inertia ixx="4.08002e-05" ixy="-1.97819e-05" ixz="-4.03016e-08" iyy="0.000147318" iyz="8.97326e-09" izz="0.000142487"/>
     </inertial>
-    <!-- Part sts3215_03a_v1_3 -->
+    
     <visual>
       <origin xyz="-0.11257 -0.0155 0.0187" rpy="-3.14159 -5.27356e-16 -1.5708"/>
       <geometry>
@@ -158,7 +151,7 @@
         <mesh filename="file:///home/madhan/test_files/so101_gazebo/so101_description/meshes/sts3215_03a_v1.stl"/>
       </geometry>
     </collision>
-    <!-- Part upper_arm_so101_v1 -->
+    
     <visual>
       <origin xyz="-0.065085 0.012 0.0182" rpy="3.14159 -0 -1.30911e-30"/>
       <geometry>
@@ -174,14 +167,13 @@
     </collision>
   </link>
 
-  <!-- Link lower_arm -->
   <link name="lower_arm_link">
     <inertial>
       <origin xyz="-0.0980701 0.00324376 0.0182831" rpy="0 0 0"/>
       <mass value="0.104"/>
       <inertia ixx="2.87438e-05" ixy="7.41152e-06" ixz="1.26409e-06" iyy="0.000159844" iyz="-4.90188e-08" izz="0.00014529"/>
     </inertial>
-    <!-- Part under_arm_so101_v1 -->
+    
     <visual>
       <origin xyz="-0.0648499 -0.032 0.0182" rpy="3.14159 -0 6.67202e-31"/>
       <geometry>
@@ -195,7 +187,7 @@
         <mesh filename="file:///home/madhan/test_files/so101_gazebo/so101_description/meshes/under_arm_so101_v1.stl"/>
       </geometry>
     </collision>
-    <!-- Part motor_holder_so101_wrist_v1 -->
+    
     <visual>
       <origin xyz="-0.0648499 -0.032 0.018" rpy="-3.14159 -2.55351e-15 -1.83387e-30"/>
       <geometry>
@@ -209,7 +201,7 @@
         <mesh filename="file:///home/madhan/test_files/so101_gazebo/so101_description/meshes/motor_holder_so101_wrist_v1.stl"/>
       </geometry>
     </collision>
-    <!-- Part sts3215_03a_v1_4 -->
+    
     <visual>
       <origin xyz="-0.1224 0.0052 0.0187" rpy="-3.14159 -7.88861e-31 -3.14159"/>
       <geometry>
@@ -225,14 +217,13 @@
     </collision>
   </link>
 
-  <!-- Link wrist -->
   <link name="wrist_link">
     <inertial>
       <origin xyz="-0.000103312 -0.0386143 0.0281156" rpy="0 0 0"/>
       <mass value="0.079"/>
       <inertia ixx="3.68263e-05" ixy="1.7893e-08" ixz="-5.28128e-08" iyy="2.5391e-05" iyz="3.6412e-06" izz="2.1e-05"/>
     </inertial>
-    <!-- Part sts3215_03a_no_horn_v1 -->
+    
     <visual>
       <origin xyz="8.32667e-17 -0.0424 0.0306" rpy="1.5708 1.5708 0"/>
       <geometry>
@@ -246,7 +237,7 @@
         <mesh filename="file:///home/madhan/test_files/so101_gazebo/so101_description/meshes/sts3215_03a_no_horn_v1.stl"/>
       </geometry>
     </collision>
-    <!-- Part wrist_roll_pitch_so101_v2 -->
+    
     <visual>
       <origin xyz="0 -0.028 0.0181" rpy="-1.5708 -1.5708 0"/>
       <geometry>
@@ -262,14 +253,13 @@
     </collision>
   </link>
 
-  <!-- Link gripper -->
   <link name="gripper_link">
     <inertial>
       <origin xyz="0.000213627 0.000245138 -0.025187" rpy="0 0 0"/>
       <mass value="0.087"/>
       <inertia ixx="2.75087e-05" ixy="-3.35241e-07" ixz="-5.7352e-06" iyy="4.33657e-05" iyz="-5.17847e-08" izz="3.45059e-05"/>
     </inertial>
-    <!-- Part sts3215_03a_v1_5 -->
+    
     <visual>
       <origin xyz="0.0077 0.0001 -0.0234" rpy="-1.5708 -5.19179e-17 -1.66533e-16"/>
       <geometry>
@@ -283,7 +273,7 @@
         <mesh filename="file:///home/madhan/test_files/so101_gazebo/so101_description/meshes/sts3215_03a_v1.stl"/>
       </geometry>
     </collision>
-    <!-- Part wrist_roll_follower_so101_v1 -->
+    
     <visual>
       <origin xyz="8.32667e-17 -0.000218214 0.000949706" rpy="-3.14159 -5.55112e-17 0"/>
       <geometry>
@@ -299,7 +289,6 @@
     </collision>
   </link>
 
-  <!-- Link d435i camera -->
   <link name="d435i_link">
     <inertial>
       <origin xyz="-0.004284478300962667 -0.018299977421816962 0.01610029163661248" rpy="0 0 0"/>
@@ -327,10 +316,6 @@
     <child link="d435i_link"/>
   </joint>
 
-  <!-- Gazebo Classic RGB-D camera on d435i_link.
-       NOTE: type="rgbd_camera" + <topic> is Ignition/gz-sim syntax and is
-       silently ignored by Gazebo Classic (gzserver). Classic needs
-       type="depth" and an explicit libgazebo_ros_camera plugin. -->
   <gazebo reference="d435i_link">
     <sensor name="d435i_rgbd" type="depth">
       <always_on>true</always_on>
@@ -357,7 +342,6 @@
     </sensor>
   </gazebo>
 
-  <!-- Gripper frame (dummy link + fixed joint) -->
   <link name="gripper_frame_link">
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -373,14 +357,13 @@
     <axis xyz="0 0 0"/>
   </joint>
 
-  <!-- Link moving_jaw_so101_v1 -->
   <link name="moving_jaw_so101_v1_link">
     <inertial>
       <origin xyz="-0.00157495 -0.0300244 0.0192755" rpy="0 0 0"/>
       <mass value="0.012"/>
       <inertia ixx="6.61427e-06" ixy="-3.19807e-07" ixz="-5.90717e-09" iyy="1.89032e-06" iyz="-1.09945e-07" izz="5.28738e-06"/>
     </inertial>
-    <!-- Part moving_jaw_so101_v1 -->
+    
     <visual>
       <origin xyz="-5.55112e-17 -5.55112e-17 0.0189" rpy="9.53145e-17 6.93889e-18 1.24077e-24"/>
       <geometry>
@@ -396,7 +379,6 @@
     </collision>
   </link>
 
-  <!-- Joint from gripper to moving_jaw_so101_v1 -->
   <joint name="gripper" type="revolute">
     <origin xyz="0.0202 0.0188 -0.0234" rpy="1.5708 -5.24284e-08 -1.41553e-15"/>
     <parent link="gripper_link"/>
@@ -417,7 +399,6 @@
     </actuator>
   </transmission>
 
-  <!-- Joint from wrist to gripper -->
   <joint name="wrist_roll" type="revolute">
     <origin xyz="5.55112e-17 -0.0611 0.0181" rpy="-1.5708 1.5221132 -7.81e-05"/>
     <parent link="wrist_link"/>
@@ -438,7 +419,6 @@
     </actuator>
   </transmission>
 
-  <!-- Joint from lower_arm to wrist -->
   <joint name="wrist_flex" type="revolute">
     <origin xyz="-0.1349 0.0052 3.62355e-17" rpy="4.02456e-15 8.67362e-16 -1.5708"/>
     <parent link="lower_arm_link"/>
@@ -459,8 +439,7 @@
     </actuator>
   </transmission>
 
-  <!-- Joint from upper_arm to lower_arm -->
-  <!-- Note: 5-degree calibration offset applied to joint limits -->
+  
   <joint name="elbow_flex" type="revolute">
     <origin xyz="-0.11257 -0.028 1.73763e-16" rpy="-3.63608e-16 8.74301e-16 1.5708"/>
     <parent link="upper_arm_link"/>
@@ -481,7 +460,6 @@
     </actuator>
   </transmission>
 
-  <!-- Joint from shoulder to upper_arm -->
   <joint name="shoulder_lift" type="revolute">
     <origin xyz="-0.0303992 -0.0182778 -0.0542" rpy="-1.5708 -1.5708 0"/>
     <parent link="shoulder_link"/>
@@ -502,7 +480,6 @@
     </actuator>
   </transmission>
 
-  <!-- Joint from base to shoulder -->
   <joint name="shoulder_pan" type="revolute">
     <origin xyz="0.0388353 -8.97657e-09 0.0624" rpy="3.14159 4.18253e-17 -3.14159"/>
     <parent link="base_link"/>
@@ -523,11 +500,6 @@
     </actuator>
   </transmission>
 
-  <!-- Disable gravity on every link. The base is already welded to the
-       world, but the arm joints have no active controller holding them, so
-       with gravity ON they would sag/collapse and look like the robot
-       "split into pieces". Turning gravity off lets the kinematic
-       joint_pose_trajectory plugin hold/command the pose cleanly. -->
   <gazebo reference="base_link"><gravity>false</gravity></gazebo>
   <gazebo reference="shoulder_link"><gravity>false</gravity></gazebo>
   <gazebo reference="upper_arm_link"><gravity>false</gravity></gazebo>
@@ -538,24 +510,63 @@
   <gazebo reference="moving_jaw_so101_v1_link"><gravity>false</gravity></gazebo>
   <gazebo reference="d435i_link"><gravity>false</gravity></gazebo>
 
-  <!-- Publish joint states from Gazebo -->
-  <gazebo>
-    <plugin filename="libgazebo_ros_joint_state_publisher.so" name="gazebo_ros_joint_state_publisher">
-      <update_rate>50</update_rate>
-      <joint_name>shoulder_pan</joint_name>
-      <joint_name>shoulder_lift</joint_name>
-      <joint_name>elbow_flex</joint_name>
-      <joint_name>wrist_flex</joint_name>
-      <joint_name>wrist_roll</joint_name>
-      <joint_name>gripper</joint_name>
-    </plugin>
-  </gazebo>
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+    <joint name="shoulder_pan">
+      <command_interface name="position">
+        <param name="min">-1.91986</param>
+        <param name="max">1.91986</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="shoulder_lift">
+      <command_interface name="position">
+        <param name="min">-1.74533</param>
+        <param name="max">1.74533</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="elbow_flex">
+      <command_interface name="position">
+        <param name="min">-1.69</param>
+        <param name="max">1.69</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="wrist_flex">
+      <command_interface name="position">
+        <param name="min">-1.65806</param>
+        <param name="max">1.65806</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="wrist_roll">
+      <command_interface name="position">
+        <param name="min">-2.74385</param>
+        <param name="max">2.84121</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="gripper">
+      <command_interface name="position">
+        <param name="min">-0.174533</param>
+        <param name="max">1.74533</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
 
-  <!-- Accept joint trajectory commands -->
   <gazebo>
-    <plugin filename="libgazebo_ros_joint_pose_trajectory.so" name="gazebo_ros_joint_pose_trajectory">
-      <update_rate>2</update_rate>
-      <frame_id>base_link</frame_id>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+      <parameters>/home/madhan/test_files/so101_gazebo/install/so101_gazebo/share/so101_gazebo/config/controllers.yaml</parameters>
     </plugin>
   </gazebo>
 

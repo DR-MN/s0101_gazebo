@@ -1,17 +1,64 @@
+# controller_manager:
+#   ros__parameters:
+#     update_rate: 100
+
+#     joint_state_broadcaster:
+#       type: joint_state_broadcaster/JointStateBroadcaster
+
+#     arm_controller:
+#       type: joint_trajectory_controller/JointTrajectoryController
+
+#     gripper_controller:
+#       type: joint_trajectory_controller/JointTrajectoryController
+
+# arm_controller:
+#   ros__parameters:
+#     joints:
+#       - shoulder_pan
+#       - shoulder_lift
+#       - elbow_flex
+#       - wrist_flex
+#       - wrist_roll
+#     command_interfaces:
+#       - position
+#     state_interfaces:
+#       - position
+#       - velocity
+#     goal_time: 0.6
+#     stopped_velocity_tolerance: 0.05
+#     constraints:
+#       stopped_velocity_tolerance: 0.05
+#       goal_time: 0.6
+
+# gripper_controller:
+#   ros__parameters:
+#     joints:
+#       - gripper
+#     command_interfaces:
+#       - position
+#     state_interfaces:
+#       - position
+#       - velocity
+#     goal_time: 0.6
+#     stopped_velocity_tolerance: 0.05
+
 controller_manager:
   ros__parameters:
-    update_rate: 100
+    update_rate: 100          # controller_manager loop rate (Hz), independent
+                              # of how fast you publish commands
+    use_sim_time: true
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
-    arm_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
+    # Streaming position controller: drives all 6 joints toward the latest
+    # Float64MultiArray on /forward_position_controller/commands.
+    # No time_from_start, no fixed publish rate — publish at any Hz and it
+    # always tracks the most recent command.
+    forward_position_controller:
+      type: position_controllers/JointGroupPositionController
 
-    gripper_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
-
-arm_controller:
+forward_position_controller:
   ros__parameters:
     joints:
       - shoulder_pan
@@ -19,25 +66,4 @@ arm_controller:
       - elbow_flex
       - wrist_flex
       - wrist_roll
-    command_interfaces:
-      - position
-    state_interfaces:
-      - position
-      - velocity
-    goal_time: 0.6
-    stopped_velocity_tolerance: 0.05
-    constraints:
-      stopped_velocity_tolerance: 0.05
-      goal_time: 0.6
-
-gripper_controller:
-  ros__parameters:
-    joints:
       - gripper
-    command_interfaces:
-      - position
-    state_interfaces:
-      - position
-      - velocity
-    goal_time: 0.6
-    stopped_velocity_tolerance: 0.05
